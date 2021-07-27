@@ -1,10 +1,10 @@
-import {combineReducers} from "redux"
-import { counterReducer } from "./counter/counterReducer"
-import {todoReducer} from "./todolist/index"
+import todoReducer from "./reducers/todoReducer"
+import { combineReducers } from "redux"
 
 const rootReducer = combineReducers({
-  count: counterReducer,
   todos: todoReducer
 })
+
+
 
 export default rootReducer

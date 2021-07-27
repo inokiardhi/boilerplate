@@ -1,24 +1,37 @@
-import React, {createContext, Fragment} from 'react'
-import './App.css';
+import React, {useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { getTodos } from './redux/actions/todoActions';
+import { TextField, Container, Divider, makeStyles, Paper, List } from '@material-ui/core';
+import ListTodo from './components/ListTodo';
 
-import CounterApp from "./CounterApp"
-import TodoList from './TodoList';
 
-import {ChildComponent} from "./Child"
-import TodoListContext from './ContextAPI/TodoListContext';
+const useStyle = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(2)
+  }
+}))
 
-function App() {
+
+const App = () => {
+  const dispatch = useDispatch()
+  const classes = useStyle()
+  const todos = useSelector(state => state.todos);
+  
+  useEffect(()=>{
+    dispatch(getTodos());
+  },[dispatch])
+  const todoList = todos.map(todo => (<ListTodo key={todo.id} todo={todo}/>))
   return (
-    <Fragment>
-      {/* <h1>Todo App</h1> */}
-      {/* <CounterApp/> */}
-      {/* <TodoList /> */}
-      <TodoListContext />
-      {/* <h1>Contoh penggunaan Context</h1> */}
-      {/* <ChildComponent /> */}
-    </Fragment>
-  );
+    <div>
+      <Container className={classes.root} component={Paper}>
+        <TextField variant="outlined" label="What is todo Today ?" fullWidth/>
+        <Divider/>
+        <List>
+          {todoList}
+        </List>
+      </Container>
+    </div>
+  )
 }
 
-
-export default App;
+export default App

@@ -2,19 +2,23 @@
   "todos": [
     {
       "id": "c520f2bb-4135-41e2-ab48-70cdfb074762",
-      "todo": "todo 4"
+      "todo": "todo 4",
+      "isDone": false
     },
     {
       "id": "81ac8fa6-52c1-41d9-8560-01f6a761b250",
-      "todo": "todo 5"
+      "todo": "todo 5",
+      "isDone": false
     },
     {
       "id": "76798504-bda9-4dd4-a9b3-8cbff38b4e01",
-      "todo": "todo lanjutan"
+      "todo": "todo lanjutan",
+      "isDone": false
     },
     {
       "id": "68117a9d-5ba9-41ef-b245-f6e612d8f036",
-      "todo": "tambah"
+      "todo": "tambah",
+      "isDone": false
     }
   ]
 }
