@@ -15,7 +15,9 @@ const initialState = [
 const todoReducer = (state = initialState, action) => {
   switch(action.type){
     case SET_TODOS: return action.payload; // action.payload must containt new all todos array from server set new todos to the entire state;
+    
     case ADD_TODO: return [...state, action.payload]; // action.payload is new todo object
+    
     case UPDATE_TODO: return state.map(lastTodo => { // action.payload is new version of todo object
       const {id, todo, isDone} = action.payload
       if(lastTodo.id !== id) return lastTodo;
@@ -25,6 +27,7 @@ const todoReducer = (state = initialState, action) => {
         isDone
       }
     });
+    
     case DELETE_TODO: return state.filter(lastTodo => lastTodo.id !== action.payload) // action.payload is id of todo that will be deleted
     default: return state;
   }
